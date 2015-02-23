@@ -1,0 +1,38 @@
+Connection: 
+Baud Rate: 9600
+Databits: 8
+Stopbits: 1
+Verfiy: No
+Flowcontrol: No
+
+***************************************
+
+Setup module:
+
+Reset:                AT+RST
+
+Mode:                 AT+CWMODE=1     (1=station, 2=AP)
+
+List APs:             AT+CWLAP
+
+Join AP:              AT+CWJAP="SSID","PASSWORD"
+
+Check connection:     AT+CWJAP?     (returnd SSID)
+
+Multiple connections: AT+CIPMUX=1
+
+Get own IP-address:   AT+CIFSR
+
+***************************************
+
+TCP Client:
+
+Connect to server:        AT+CIPSTART=4,"TCP","192.168.1.103",1234  (connect to 192.168.1.104, port 1234 on channel 4)
+Enter transmittion mode:  AT+CIPMODE=1
+Send Data:                AT+CIPSEND=4,5 (send 5 bytes on channel 4)
+
+***************************************
+
+TCP Server:
+
+Setup Server:       AT+CIPSERVER=1,1234   (TCP server on port 1234, 1 means enabled)
